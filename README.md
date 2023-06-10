@@ -12,7 +12,7 @@ Se puede utilizar la documentación de la API en swagger como referencia y ayuda
 
 ---
 
-### Rutas actual:
+### Rutas actuales:
 Luego debemos hacer la documentacion con Swagger
 
 - https://iot-impact-nodejs.vercel.app/
