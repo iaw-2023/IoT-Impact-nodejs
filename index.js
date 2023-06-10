@@ -17,7 +17,7 @@ app.listen(port, () => {
 
 
 app.get("/", async (req, res) => {
-  res.json({"message": "Bienvenido a la pagina principal"});
+	res.json({ "message": "Bienvenido a la pagina principal" });
 });
 
 
