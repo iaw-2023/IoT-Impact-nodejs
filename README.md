@@ -1,10 +1,10 @@
-## Idea
+# Idea
 
 La idea sería utilizar NodeJS para implementar la API implementada en Laravel. Todo esto conectado con la misma base de datos utilizada por el Proyecto Framework PHP - Laravel
 
----
 
-## Manual de uso
+
+# Manual de uso
 
 ### Descargamos el repo e ingresamos
 ```
