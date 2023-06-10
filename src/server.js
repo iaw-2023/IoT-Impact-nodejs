@@ -1,6 +1,11 @@
 const express = require("express");
+const cors = require("cors");
 const { supabase } = require("./supabaseClient");
 const app = express();
+
+
+// Habilitar CORS
+app.use(cors());
 
 // Puerto en el que escucha el servidor
 const port = 3000;
