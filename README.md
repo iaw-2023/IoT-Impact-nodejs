@@ -4,7 +4,7 @@ La idea sería utilizar NodeJS para implementar la API implementada en Laravel. 
 
 
 
-# Manual de uso
+# Instrucciones
 
 ### Descargamos el repo e ingresamos
 ```
