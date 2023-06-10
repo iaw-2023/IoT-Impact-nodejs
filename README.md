@@ -12,11 +12,14 @@ Se puede utilizar la documentación de la API en swagger como referencia y ayuda
 
 ---
 
-https://iot-impact-nodejs.vercel.app/
-https://iot-impact-nodejs.vercel.app/rest/categories
-https://iot-impact-nodejs.vercel.app/rest/categories/1
-https://iot-impact-nodejs.vercel.app/rest/products
-https://iot-impact-nodejs.vercel.app/rest/products/1
+### Rutas actual:
+Luego debemos hacer la documentacion con Swagger
+
+- https://iot-impact-nodejs.vercel.app/
+- https://iot-impact-nodejs.vercel.app/rest/categories
+- https://iot-impact-nodejs.vercel.app/rest/categories/1
+- https://iot-impact-nodejs.vercel.app/rest/products
+- https://iot-impact-nodejs.vercel.app/rest/products/1
 
 
 
