@@ -15,6 +15,12 @@ app.listen(port, () => {
 	console.log(`Servidor iniciado en el puerto ${port}`);
 });
 
+
+app.get("/", async (req, res) => {
+  res.json({"message": "Bienvenido a la pagina principal"});
+});
+
+
 // Ruta para obtener todos los productos
 app.get("/rest/products/", async (req, res) => {
 	try {
