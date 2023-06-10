@@ -1,6 +1,6 @@
 # Idea
 
-La idea sería utilizar NodeJS para implementar la API implementada en Laravel. Todo esto conectado con la misma base de datos utilizada por el Proyecto Framework PHP - Laravel
+La idea sería utilizar NodeJS para implementar la API implementada en Laravel. Todo esto conectado con la misma base de datos utilizada por el [Proyecto Framework PHP - Laravel](https://github.com/iaw-2023/IoT-Impact-laravel).
 
 
 
