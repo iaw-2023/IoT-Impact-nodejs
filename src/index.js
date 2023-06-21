@@ -1,8 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-const { supabase } = require("./supabaseClient");
 const app = express();
-
+const routes = require("./routes");
 
 // Habilitar CORS
 app.use(cors());
@@ -15,11 +14,10 @@ app.listen(port, () => {
   console.log(`Servidor iniciado en el puerto ${port}`);
 });
 
-// Rutas
-app.use("/rest/products", require("./routes/productRoutes"));
-app.use("/rest/categories", require("./routes/categoryRoutes"));
-
-
+// Bienvenida
 app.get("/", async (req, res) => {
   res.json({ message: "Bienvenido a la página principal" });
 });
+
+// Rutas
+app.use("/rest", routes);
