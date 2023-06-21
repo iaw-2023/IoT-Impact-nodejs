@@ -20,8 +20,12 @@ npm install
 ### Variables de entorno
 Creamos un archivo .env con el siguiente formato:
 ```
-SUPABASE_URL=<tu-url>
-SUPABASE_KEY=<tu-key>
+DB_CONNECTION=<completar>
+DB_HOST=<completar>
+DB_PORT=<completar>
+DB_DATABASE=<completar>
+DB_USERNAME=<completar>
+DB_PASSWORD=<completar>
 ```
   
 ### Ejecutar para devs
