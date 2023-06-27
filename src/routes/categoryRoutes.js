@@ -1,34 +1,21 @@
+// categoryRoutes.js
 const express = require("express");
 const router = express.Router();
-const { db } = require("../client");
+const { getAllCategories, getCategoryById } = require("../db/queries");
 
 router.get("/", async (req, res) => {
-  try {
-    const query = "SELECT * FROM product_category";
-    const { rows } = await db.query(query);
-    res.json(rows);
-  } catch (error) {
-    const ERROR_MSG = "Error en la consulta por categorias";
-    console.error(ERROR_MSG, error);
-    res.status(500).json({ error: ERROR_MSG });
-  }
+  const categories = await getAllCategories();
+  res.json(categories);
 });
 
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
-  try {
-    const query = "SELECT * FROM product_category WHERE id = $1";
-    const { rows } = await db.query(query, [id]);
+  const category = await getCategoryById(id);
 
-    if (rows.length === 0) {
-      res.status(404).json({ message: "Categoria no encontrada" });
-    } else {
-      res.json(rows[0]);
-    }
-  } catch (error) {
-    const ERROR_MSG = "Error en la consulta de la categoria";
-    console.error(ERROR_MSG, error);
-    res.status(500).json({ error: ERROR_MSG });
+  if (category.length === 0) {
+    res.status(404).json({ message: "Categoria no encontrada" });
+  } else {
+    res.json(category[0]);
   }
 });
 
