@@ -120,6 +120,7 @@ module.exports = {
   getCategoryById,
   getAllOrders,
   getOrderById,
+  postItem,
   getAllItems,
   getItemById,
 };
