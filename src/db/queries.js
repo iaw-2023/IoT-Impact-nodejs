@@ -73,11 +73,9 @@ const getOrderById = async (id) => {
   }
 };
 
-const postOrder = async (orderData, res) => {
+const postOrder = async (customer_email, total_amount, res) => {
   try {
-    const query =
-      "INSERT INTO orders (customer_email, total_amount) VALUES ($1, $2) RETURNING *";
-    const { customer_email, total_amount } = orderData;
+    const query = "INSERT INTO orders (customer_email, total_amount) VALUES ($1, $2) RETURNING *";
     const values = [customer_email, total_amount];
     const { rows } = await db.query(query, values);
     res.status(201).json(rows[0]);

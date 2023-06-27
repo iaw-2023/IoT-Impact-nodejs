@@ -21,7 +21,8 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const { customer_email, total_amount } = req.body;
+    const customer_email = req.body.customer_email;
+    const total_amount = req.body.total_amount;
 
     if (!customer_email || !total_amount) {
       return res.status(400).json({ message: "Faltan campos obligatorios al hacer post de la orden" });
