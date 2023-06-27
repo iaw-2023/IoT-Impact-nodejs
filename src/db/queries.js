@@ -112,9 +112,6 @@ const postOrder = async (orderData, res) => {
   }
 };
 
-
-
-
 const getAllItems = async () => {
   try {
     const query = "SELECT * FROM items";
