@@ -27,8 +27,7 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ message: "Faltan campos obligatorios al hacer post de la orden" });
     }
 
-    const newOrder = await postItem({ customer_email, total_amount });
-    res.status(201).json(newOrder);
+    await postItem({ customer_email, total_amount }, res);
   } catch (error) {
     res.status(500).json({ message: "Error al crear la orden" });
   }
