@@ -73,18 +73,30 @@ const getOrderById = async (id) => {
   }
 };
 
-const postOrder = async (customer_email, total_amount, res) => {
+const postOrder = async (orderData) => {
   try {
-    const query = "INSERT INTO orders (customer_email, total_amount) VALUES ($1, $2) RETURNING *";
-    const values = [customer_email, total_amount];
-    const { rows } = await db.query(query, values);
-    res.status(201).json(rows[0]);
+    const { customer_email, total_amount, items } = orderData;
+    
+    // Insert the order into the orders table
+    const orderQuery = "INSERT INTO orders (customer_email, total_amount) VALUES ($1, $2) RETURNING *";
+    const orderValues = [customer_email, total_amount];
+    const orderResult = await db.query(orderQuery, orderValues);
+    const orderId = orderResult.rows[0].id;
+
+    // Insert the items into the items table
+    const itemQuery =
+      "INSERT INTO items (order_id, product_id, quantity, individual_price) VALUES ($1, $2, $3, $4)";
+    const itemValues = items.map((item) => [orderId, item.product_id, item.quantity, item.individual_price]);
+    await db.query(itemQuery, itemValues);
+
+    return orderResult.rows[0];
   } catch (error) {
     const ERROR_MSG = "Error al crear el pedido";
     console.error(ERROR_MSG, error);
-    res.status(500).json({ error: ERROR_MSG });
+    throw new Error(ERROR_MSG);
   }
 };
+
 
 
 const getAllItems = async () => {

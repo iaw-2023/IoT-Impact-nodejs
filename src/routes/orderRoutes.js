@@ -21,18 +21,20 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const customer_email = req.body.customer_email;
-    const total_amount = req.body.total_amount;
+    const { customer_email, total_amount, items } = req.body;
 
-    if (!customer_email || !total_amount) {
+    if (!customer_email || !total_amount || !items) {
       return res.status(400).json({ message: "Faltan campos obligatorios al hacer post de la orden" });
     }
 
-    await postOrder({ customer_email, total_amount }, res);
+    const orderData = { customer_email, total_amount, items };
+    const newOrder = await postOrder(orderData);
+    res.status(201).json(newOrder);
   } catch (error) {
     res.status(500).json({ message: "Error al crear la orden" });
   }
 });
+
 
 
 module.exports = router;
