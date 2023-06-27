@@ -6,6 +6,9 @@ const routes = require("./routes");
 // Enable CORS
 app.use(cors());
 
+// esto rompe todo
+app.use(express.json());
+
 // Port on which the server listens
 const port = 3000;
 
