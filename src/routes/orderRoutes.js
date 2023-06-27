@@ -37,7 +37,7 @@ router.post("/", async (req, res) => {
       }
 
       const orderData = { customer_email, total_amount, items };
-      const newOrder = await postOrder(orderData, res);
+      //const newOrder = await postOrder(orderData, res);
       res.status(201).json(newOrder);
     });
   } catch (error) {
