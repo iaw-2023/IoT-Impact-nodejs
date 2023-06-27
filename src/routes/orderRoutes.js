@@ -31,9 +31,10 @@ router.post("/", async (req, res) => {
     const newOrder = await postOrder(orderData, res);
     res.status(201).json(newOrder);
   } catch (error) {
-    res.status(500).json({ message: "Error al crear la orden" });
+    res.status(500).json({ message: `Error al crear la orden: ${error.message}` });
   }
 });
+
 
 
 
