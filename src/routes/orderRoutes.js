@@ -1,7 +1,7 @@
 // orderRoutes.js
 const express = require("express");
 const router = express.Router();
-const { getAllOrders, getOrderById, postItem } = require("../db/queries");
+const { getAllOrders, getOrderById, postOrder } = require("../db/queries");
 
 router.get("/", async (req, res) => {
   const orders = await getAllOrders();
@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ message: "Faltan campos obligatorios al hacer post de la orden" });
     }
 
-    await postItem({ customer_email, total_amount }, res);
+    await postOrder({ customer_email, total_amount }, res);
   } catch (error) {
     res.status(500).json({ message: "Error al crear la orden" });
   }

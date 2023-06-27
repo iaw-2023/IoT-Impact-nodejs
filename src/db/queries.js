@@ -73,7 +73,7 @@ const getOrderById = async (id) => {
   }
 };
 
-const postItem = async (orderData, res) => {
+const postOrder = async (orderData, res) => {
   try {
     const query =
       "INSERT INTO orders (customer_email, total_amount) VALUES ($1, $2) RETURNING *";
@@ -121,7 +121,7 @@ module.exports = {
   getCategoryById,
   getAllOrders,
   getOrderById,
-  postItem,
+  postOrder,
   getAllItems,
   getItemById,
 };
