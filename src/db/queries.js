@@ -73,6 +73,21 @@ const getOrderById = async (id) => {
   }
 };
 
+const postItem = async (orderData) => {
+  try {
+    const query =
+      "INSERT INTO orders (customer_email, total_amount) VALUES ($1, $2) RETURNING *";
+    const { customer_email, total_amount } = orderData;
+    const values = [customer_email, total_amount];
+    const { rows } = await db.query(query, values);
+    return rows[0];
+  } catch (error) {
+    const ERROR_MSG = "Error al crear el pedido";
+    console.error(ERROR_MSG, error);
+    res.status(500).json({ error: ERROR_MSG });
+  }
+};
+
 const getAllItems = async () => {
   try {
     const query = "SELECT * FROM items";
