@@ -73,29 +73,45 @@ const getOrderById = async (id) => {
   }
 };
 
-const postOrder = async (orderData) => {
+const postOrder = async (orderData, res) => {
   try {
     const { customer_email, total_amount, items } = orderData;
-    
-    // Insert the order into the orders table
-    const orderQuery = "INSERT INTO orders (customer_email, total_amount) VALUES ($1, $2) RETURNING *";
+
+    const orderQuery =
+      "INSERT INTO orders (customer_email, total_amount) VALUES ($1, $2) RETURNING *";
     const orderValues = [customer_email, total_amount];
     const orderResult = await db.query(orderQuery, orderValues);
     const orderId = orderResult.rows[0].id;
 
-    // Insert the items into the items table
     const itemQuery =
       "INSERT INTO items (order_id, product_id, quantity, individual_price) VALUES ($1, $2, $3, $4)";
-    const itemValues = items.map((item) => [orderId, item.product_id, item.quantity, item.individual_price]);
+    const itemValues = items.map((item) => [
+      orderId,
+      item.product_id,
+      item.quantity,
+      item.individual_price,
+    ]);
     await db.query(itemQuery, itemValues);
 
     return orderResult.rows[0];
   } catch (error) {
-    const ERROR_MSG = "Error al crear el pedido";
-    console.error(ERROR_MSG, error);
-    throw new Error(ERROR_MSG);
+    let errorMessage = "Error al crear el pedido";
+
+    if (error.constraint === "orders_customer_email_check") {
+      errorMessage = "El formato del correo electrónico del cliente es inválido";
+    } else if (error.constraint === "items_order_id_fkey") {
+      errorMessage = "El ID de orden proporcionado no existe";
+    } else if (error.code === "23502") {
+      errorMessage = "Faltan campos obligatorios en los elementos de la orden";
+    } else {
+      console.error(errorMessage, error);
+    }
+
+    res.status(500).json({ error: errorMessage });
+    throw new Error(errorMessage);
   }
 };
+
 
 
 

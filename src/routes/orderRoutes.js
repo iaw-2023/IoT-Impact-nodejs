@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
     }
 
     const orderData = { customer_email, total_amount, items };
-    const newOrder = await postOrder(orderData);
+    const newOrder = await postOrder(orderData, res);
     res.status(201).json(newOrder);
   } catch (error) {
     res.status(500).json({ message: "Error al crear la orden" });
