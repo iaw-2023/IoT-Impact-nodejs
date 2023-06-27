@@ -21,30 +21,19 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    let bodyData = "";
+    const { customer_email, total_amount, items } = req.body;
 
-    // Collect the data chunks of the request body
-    req.on("data", (chunk) => {
-      bodyData += chunk.toString();
-    });
+    if (!customer_email || !total_amount || !items) {
+      return res.status(400).json({ message: "Faltan campos obligatorios al hacer post de la orden" });
+    }
 
-    // Process the complete request body
-    req.on("end", async () => {
-      const { customer_email, total_amount, items } = JSON.parse(bodyData);
-
-      if (!customer_email || !total_amount || !items) {
-        return res.status(400).json({ message: "Faltan campos obligatorios al hacer post de la orden" });
-      }
-
-      const orderData = { customer_email, total_amount, items };
-      //const newOrder = await postOrder(orderData, res);
-      res.status(201).json(newOrder);
-    });
+    const orderData = { customer_email, total_amount, items };
+    const newOrder = await postOrder(orderData, res);
+    res.status(201).json(newOrder);
   } catch (error) {
     res.status(500).json({ message: `Error al crear la orden: ${error.message}` });
   }
 });
-
 
 
 
