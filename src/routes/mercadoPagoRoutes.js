@@ -18,8 +18,7 @@ router.post('/', (req, res) => {
         console.log("Pago actualizado: usuario paga con MP")
       } else {
         console.log("Error intentando actualizar el pago del cliente...")
-      }
-      
+      }      
 
       const { status, status_detail, id } = response.body;
       res.status(response.status).json({ status, status_detail, id });
