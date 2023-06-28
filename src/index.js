@@ -3,11 +3,11 @@ const cors = require("cors");
 const app = express();
 const routes = require("./routes");
 
-//Esto deberia estar para parsear los jsons pero rompe todo
-app.use(express.json());
-
 // Enable CORS
 app.use(cors());
+
+// Parse JSON request bodies
+app.use(express.json());
 
 // Port on which the server listens
 const port = 3000;
