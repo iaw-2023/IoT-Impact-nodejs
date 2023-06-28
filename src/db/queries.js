@@ -160,6 +160,28 @@ const getUserByEmail = async (email) => {
   }
 };
 
+const updateOrderWithMP = async (email) => {
+  try {
+    const query = `
+      UPDATE orders
+      SET efectivo = false 
+      WHERE customer_email = $1
+        AND created_at = (
+          SELECT created_at
+          FROM orders
+          WHERE customer_email = $1
+          ORDER BY created_at DESC
+          LIMIT 1
+        )`;
+    await db.query(query, [email]);
+    return true;
+  } catch (error) {
+    const ERROR_MSG = "Error al actualizar la orden";
+    console.error(ERROR_MSG, error);
+    return false;
+  }
+}
+
 
 
 module.exports = {
@@ -174,4 +196,5 @@ module.exports = {
   getItemById,
   getAllUsers,
   getUserByEmail,
+  updateOrderWithMP,
 };

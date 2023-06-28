@@ -8,5 +8,6 @@ router.use("/orders", require("./orderRoutes"));
 router.use("/items", require("./itemRoutes"));
 router.use("/loginReact", require("./loginReactRoutes"));
 router.use("/register", require("./registerRoutes"));
+router.use("/mp", require("./mercadoPagoRoutes"));
 
 module.exports = router;
