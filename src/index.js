@@ -1,24 +1,26 @@
-// index.js
 const express = require("express");
 const cors = require("cors");
 const app = express();
 const routes = require("./routes");
 
-// Habilitar CORS
+// Enable CORS
 app.use(cors());
 
-// Puerto en el que escucha el servidor
+// Parse JSON request bodies
+app.use(express.json());
+
+// Port on which the server listens
 const port = 3000;
 
-// Iniciar el servidor
+// Start the server
 app.listen(port, () => {
-  console.log(`Servidor iniciado en el puerto ${port}`);
+  console.log(`Server started on port ${port}`);
 });
 
-// Bienvenida
-app.get("/", async (req, res) => {
-  res.json({ message: "Bienvenido a la página principal" });
+// Welcome route
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to the main page" });
 });
 
-// Rutas
+// Routes
 app.use("/rest", routes);
