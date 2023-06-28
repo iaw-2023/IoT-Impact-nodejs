@@ -148,6 +148,18 @@ const getAllUsers = async () => {
   }
 };
 
+const getUserByEmail = async (email) => {
+  try {
+    const query = 'SELECT * FROM "usersReact" WHERE email = $1';
+    const { rows } = await db.query(query, [email]);
+    return rows;
+  } catch (error) {
+    const ERROR_MSG = "Error en la consulta del usuario";
+    console.error(ERROR_MSG, error);
+    res.status(500).json({ error: ERROR_MSG });
+  }
+};
+
 
 
 module.exports = {
@@ -161,4 +173,5 @@ module.exports = {
   getAllItems,
   getItemById,
   getAllUsers,
+  getUserByEmail,
 };
