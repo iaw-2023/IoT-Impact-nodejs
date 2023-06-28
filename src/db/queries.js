@@ -136,6 +136,19 @@ const getItemById = async (id) => {
   }
 };
 
+const getAllUsers = async () => {
+  try {
+    const query = 'SELECT * FROM "usersReact"';
+    const { rows } = await db.query(query);
+    return rows;
+  } catch (error) {
+    const ERROR_MSG = "Error en la consulta por usuarios";
+    console.error(ERROR_MSG, error);
+    res.status(500).json({ error: ERROR_MSG });
+  }
+};
+
+
 
 module.exports = {
   getAllProducts,
@@ -147,4 +160,5 @@ module.exports = {
   postOrder,
   getAllItems,
   getItemById,
+  getAllUsers,
 };
