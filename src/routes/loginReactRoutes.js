@@ -9,9 +9,9 @@ router.post("/", async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
-    const user = await db.query('SELECT * FROM "usersReact" WHERE email = $1', [email]);
+    const storedPassword = await db.query('SELECT password FROM "usersReact" WHERE email = $1', [email]);
 
-    if (user.length > 0 && await bcrypt.compare(password, user[0].password)) {
+    if (storedPassword.length > 0 && await bcrypt.compare(password, storedPassword[0])) {
       // Password matches, handle successful login
       return res.status(200).json({ message: 'Login successful' });
     } else {
