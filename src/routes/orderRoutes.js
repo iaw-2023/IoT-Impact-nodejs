@@ -24,7 +24,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     
-    const orderQuery = 'INSERT INTO orders (customer_email, total_amount) VALUES ($1, $2, $3) RETURNING id';
+    const orderQuery = 'INSERT INTO orders (customer_email, total_amount, efectivo) VALUES ($1, $2, $3) RETURNING id';
     const orderValues = [req.body.customer_email, req.body.total_amount, req.body.efectivo];
     const orderResult = await db.query(orderQuery, orderValues);
     const orderId = orderResult.rows[0].id;
