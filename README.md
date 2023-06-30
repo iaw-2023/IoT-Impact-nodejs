@@ -38,14 +38,4 @@ npm run dev
 npm run start
 ```
 
----
-
-
-### Rutas actuales:
-
-- https://iot-impact-nodejs.vercel.app/
-- https://iot-impact-nodejs.vercel.app/rest/categories
-- https://iot-impact-nodejs.vercel.app/rest/categories/1
-- https://iot-impact-nodejs.vercel.app/rest/products
-- https://iot-impact-nodejs.vercel.app/rest/products/1
 
