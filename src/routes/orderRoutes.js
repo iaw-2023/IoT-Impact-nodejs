@@ -20,7 +20,6 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-//Lo hice asi feo tendria que ir en queries pero no llego con el tiempo jeje
 router.post("/", async (req, res) => {
   try {
     
@@ -43,15 +42,11 @@ router.post("/", async (req, res) => {
       await db.query(itemQuery, itemValues);
     }
 
-
     res.status(201).json({ message: 'Order created successfully' });
   } catch (error) {
     throw error;
   }
-
 });
-
-
 
 
 module.exports = router;

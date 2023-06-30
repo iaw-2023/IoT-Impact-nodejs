@@ -5,7 +5,6 @@ const { db } = require("../db/connection");
 const bcrypt = require('bcrypt');
 
 
-//Lo hice asi feo tendria que ir en queries pero no llego con el tiempo jeje
 router.post("/", async (req, res) => {
   try {
     const email = req.body.email;
