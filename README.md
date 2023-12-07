@@ -1,3 +1,26 @@
+## Deploys
+### Vercel:
+https://iot-impact-js.vercel.app/
+
+http://iot-impact-laravel.vercel.app/
+
+### AWS Amplify:
+https://deploy.dza6lgfhpbee3.amplifyapp.com/
+### Raspberry Pi:
+https://burger-planet.chewer.net/
+
+https://admin-burger-planet.chewer.net/
+
+---
+
+### Todos los repos del proyecto:
+- https://github.com/iaw-2023/IoT-Impact-js/
+- https://github.com/iaw-2023/IoT-Impact-laravel/
+- https://github.com/iaw-2023/IoT-Impact-nodejs/
+
+---
+
+
 # Idea
 
 La idea sería utilizar NodeJS para implementar la API implementada en Laravel. Todo esto conectado con la misma base de datos utilizada por el [Proyecto Framework PHP - Laravel](https://github.com/iaw-2023/IoT-Impact-laravel).
